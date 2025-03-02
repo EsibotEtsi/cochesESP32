@@ -3,9 +3,8 @@
 #include <WiFi.h>
 
 uint8_t broadcastAddress[] = {0x9c, 0x9c, 0x1f, 0xcb, 0x48, 0xc4};
-
-int pot1 = 15;
-int pot2 = 2;
+int pot1 = 35;
+int pot2 = 34;
 
 typedef struct struct_message {
   int pot1;
@@ -52,8 +51,10 @@ void setup() {
 }
  
 void loop() {
-  Serial.print("Valor del potenciometro: ");
-  Serial.println(analogRead(pot1));
+  Serial.print("Valor del potenciometro 1: ");
+  Serial.print(analogRead(pot1));
+  Serial.print("\tValor del potenciometro 2: ");
+  Serial.println(analogRead(pot2));
   // Set values to send
   myData.pot1=analogRead(pot1);
   myData.pot2=analogRead(pot2);
@@ -66,5 +67,5 @@ void loop() {
   else {
     Serial.println("Error sending the data");
   }
-  delay(100);
+  delay(50);
 }
